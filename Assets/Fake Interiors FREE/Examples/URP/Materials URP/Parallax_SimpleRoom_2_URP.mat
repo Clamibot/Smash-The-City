@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Parallax_SimpleRoom_2_URP
+  m_Shader: {fileID: 4800000, guid: 963bc3c6f4b8c2f4c8db108f28a07575, type: 3}
+  m_ShaderKeywords: _KEYWORD1_ON _PROPLAYERTOGGLE_ON
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Back:
+        m_Texture: {fileID: 2800000, guid: 527064c4b3c8d254e8797b1f255a15cc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ceileing:
+        m_Texture: {fileID: 2800000, guid: 63bb90049cec6ac479388e696ef377d4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ceiling:
+        m_Texture: {fileID: 2800000, guid: 1668a6eabe2aa73429156719e948ff4b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FacadeAlbedo:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FacadeSmoothness:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Floor:
+        m_Texture: {fileID: 2800000, guid: 58f075d12721dce498cb8562c6a13f96, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Props:
+        m_Texture: {fileID: 2800000, guid: f6ab736756a88344ea49ec537d9ef633, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: e5e660bd44fcb5d498761b934c5f5f4e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample2:
+        m_Texture: {fileID: 2800000, guid: e5e660bd44fcb5d498761b934c5f5f4e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Wall:
+        m_Texture: {fileID: 2800000, guid: 527064c4b3c8d254e8797b1f255a15cc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BackWallTexTiling: 0
+    - _BackWallTexTilling: 0
+    - _BackWallTile: 2
+    - _CeilingTexTiling: 0
+    - _CeilingTexTilling: 0
+    - _CeilingTile: 2
+    - _FacadeTexture: 0
+    - _FacadeTiling: 2
+    - _Float0: -1.57
+    - _Float1: -0.5
+    - _Float2: 0.2
+    - _FloorTexTiling: 0
+    - _FloorTexTilling: 4
+    - _FloorTile: 2
+    - _Keyword1: 1
+    - _PropLayerToggle: 1
+    - _PropsTexTiling: 0
+    - _PropsTexTilling: 1
+    - _RoomIntensity: 1
+    - _RoomTile: 0.42
+    - _SmoothnessValue: 1
+    - _SwitchPlane: 0
+    - _TogglePropLayer: 0
+    - _WallTile: 2
+    - _WalltexTiling: 0
+    - _WalltexTilling: 0
+    - __dirty: 0
+    m_Colors:
+    - _PositionOffsetXYZroomsWprops: {r: 0, g: 4.73, b: 0, a: 0}
+    - _RoomColorTint: {r: 1, g: 1, b: 1, a: 0}
+    - _RoomsXYZPropsW: {r: 1, g: 1, b: 1, a: 1}
+    - _Vector0: {r: 0.93, g: 1, b: 0, a: 0}
