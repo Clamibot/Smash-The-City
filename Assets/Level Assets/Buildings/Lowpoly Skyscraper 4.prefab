@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 263065149213040975}
   - component: {fileID: 263065149213040974}
   m_Layer: 0
-  m_Name: Skyscraper Windows
+  m_Name: Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 263065150702247361}
   - component: {fileID: 263065150702247360}
   m_Layer: 0
-  m_Name: Skyscraper Exterior LOD0
+  m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 263065151143106984}
   - component: {fileID: 263065151143106983}
   m_Layer: 0
-  m_Name: Skyscraper Exterior LOD1
+  m_Name: LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1624191760622443216}
   - component: {fileID: 1624191760622443217}
   m_Layer: 0
-  m_Name: Lowpoly Skyscraper 8 LOD0
+  m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 1624191760923812648}
   - component: {fileID: 1624191760923812649}
   m_Layer: 0
-  m_Name: Skyscraper Windows
+  m_Name: Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 1624191761781309227}
   - component: {fileID: 1624191761781309228}
   m_Layer: 0
-  m_Name: Lowpoly Skyscraper 8 LOD1
+  m_Name: LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
