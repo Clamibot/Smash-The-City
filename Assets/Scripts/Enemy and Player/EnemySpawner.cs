@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.isPaused == false && Time.time > nextSpawn)
+        if(Time.timeScale == 0 && Time.time > nextSpawn)
         {
             SpawnEnemy();
 
@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        if(enemyPrefab != null && GameManager.isPaused == false)
+        if(enemyPrefab != null && Time.timeScale == 0)
             Instantiate(enemyPrefab, transform.position, Quaternion.identity);
     }
 }

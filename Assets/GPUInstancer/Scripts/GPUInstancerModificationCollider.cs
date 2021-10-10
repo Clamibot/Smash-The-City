@@ -7,7 +7,7 @@ namespace GPUInstancer
     {
         public GPUInstancerPrefabManager prefabManager;
 
-        private List<GPUInstancerPrefab> _enteredInstances;
+        public List<GPUInstancerPrefab> _enteredInstances;
         private Collider _collider;
 
         private void Awake()

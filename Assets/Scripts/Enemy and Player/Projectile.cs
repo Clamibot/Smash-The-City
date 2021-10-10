@@ -22,4 +22,8 @@ public class Projectile : MonoBehaviour
     }
 
     //TODO implement moving and range
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }

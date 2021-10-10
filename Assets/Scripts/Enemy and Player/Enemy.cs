@@ -9,6 +9,11 @@ public class Enemy : LivingEntity
     [Header("Enemy")]
     public int attackPower;
     public float attackRange = 10f;
+    public GameObject enemyStats;
+    public GPUInstancer.GPUInstancerPrefabManager prefabManager;
+    public GPUInstancer.GPUInstancerModificationCollider deinstancingSphere;
+    public GPUInstancer.GPUInstancerModificationCollider deinstancingArea;
+    private GPUInstancer.GPUInstancerPrefab allocatedGO;
 
     //NavMesh Movement
     NavMeshAgent agent;
@@ -25,6 +30,14 @@ public class Enemy : LivingEntity
         agent.destination = transform.position;
 
         base.Start();
+
+        prefabManager = GameObject.Find("GPUI Prefab Manager").GetComponent<GPUInstancer.GPUInstancerPrefabManager>();
+        deinstancingSphere = GameObject.Find("DeInstancingSphere").GetComponent<GPUInstancer.GPUInstancerModificationCollider>();
+        deinstancingArea = GameObject.Find("DeInstancingArea").GetComponent<GPUInstancer.GPUInstancerModificationCollider>();
+        allocatedGO = GetComponent<GPUInstancer.GPUInstancerPrefab>();
+        fracture.transform.localScale = transform.localScale;
+        enemyStats.SetActive(false);
+        enabled = false;
     }
 
     protected void Update()
@@ -36,6 +49,50 @@ public class Enemy : LivingEntity
 
         if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)
             Attack();
+
+        if (shieldBar.value < shields)
+        {
+            rechargeTimer += Time.deltaTime;
+            if (rechargeTimer > rechargeDelay)
+            {
+                shieldBar.value += rechargeRate * Time.deltaTime;
+                shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f + (shieldBar.value / shields) * 1.2f);
+                if (shieldBar.value == shields)
+                {
+                    enemyStats.SetActive(false);
+                    enabled = false;
+                }
+            }
+        }
+
+        shieldRenderer.material.SetColor("Color_63659391", new Color(1.0f - (shieldBar.value * 2 / 255), shieldBar.value / 255, shieldBar.value * 2 / 255));
+    }
+
+    protected void OnCollisionEnter(Collision collision)
+    {
+        rechargeTimer = 0;
+        enemyStats.SetActive(true);
+        enabled = true;
+
+        if (shieldBar.value > 0)
+        {
+            shieldBar.value -= collision.impulse.magnitude / damageResistance;
+
+            if (shieldBar.value == 0)
+                shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f);
+        }
+        else
+        {
+            healthBar.value -= collision.impulse.magnitude / damageResistance;
+        }
+
+        if (healthBar.value == 0)
+        {
+            deinstancingArea._enteredInstances.Remove(allocatedGO);
+            deinstancingSphere._enteredInstances.Remove(allocatedGO);
+            GPUInstancer.GPUInstancerAPI.RemovePrefabInstance(prefabManager, allocatedGO);
+            base.Die();
+        }
     }
 
     private void Attack()
