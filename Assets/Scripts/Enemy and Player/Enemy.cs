@@ -7,9 +7,12 @@ using UnityEngine.AI;
 public class Enemy : LivingEntity
 {
     [Header("Enemy")]
+    public Animator anim;
     public int attackPower;
     public float attackRange = 10f;
     public GameObject enemyStats;
+
+    [Header("GPU Stuff")]
     public GPUInstancer.GPUInstancerPrefabManager prefabManager;
     public GPUInstancer.GPUInstancerModificationCollider deinstancingSphere;
     public GPUInstancer.GPUInstancerModificationCollider deinstancingArea;
@@ -44,11 +47,15 @@ public class Enemy : LivingEntity
     {
         if (player != null)
             GoTowardsPoint(player.transform.position);
-        else
+        else if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
             GoToRandomPoint();
 
         if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)
+        {
+            if (anim != null)
+                anim.SetTrigger("Attack");
             Attack();
+        }
 
         if (shieldBar.value < shields)
         {
@@ -74,6 +81,7 @@ public class Enemy : LivingEntity
         enemyStats.SetActive(true);
         enabled = true;
 
+        //Sheild or Health damage
         if (shieldBar.value > 0)
         {
             shieldBar.value -= collision.impulse.magnitude / damageResistance;
@@ -83,14 +91,20 @@ public class Enemy : LivingEntity
         }
         else
         {
+            if (anim != null)
+                anim.SetTrigger("Hurt");
             healthBar.value -= collision.impulse.magnitude / damageResistance;
         }
 
+        //Does the creature die?
         if (healthBar.value == 0)
         {
             deinstancingArea._enteredInstances.Remove(allocatedGO);
             deinstancingSphere._enteredInstances.Remove(allocatedGO);
             GPUInstancer.GPUInstancerAPI.RemovePrefabInstance(prefabManager, allocatedGO);
+
+            if (anim != null)
+                anim.SetTrigger("Die");
             base.Die();
         }
     }
@@ -113,7 +127,7 @@ public class Enemy : LivingEntity
 
     public void GoToRandomPoint()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * 100; //Get a random direction
+        Vector3 randomDirection = Random.insideUnitSphere * 10; //Get a random direction
         randomDirection += transform.position;  //Add it to our position 
 
         NavMeshHit hit;
