@@ -7,10 +7,12 @@ public class LivingEntity : MonoBehaviour
 {
     [Header("Living Entity")]
     public MeshRenderer shieldRenderer;
-    public Slider healthBar;
-    public Slider shieldBar;
-    public float health = 100;
-    public float shields = 100;
+    public Image healthBar;
+    public Image shieldBar;
+    public float maxHealth = 100;
+    protected float health;
+    public float maxShields = 100;
+    protected float shields;
     public float rechargeDelay = 5;
     public float rechargeRate = 20;
     public float damageResistance = 1000;
@@ -20,15 +22,22 @@ public class LivingEntity : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        healthBar.maxValue = health;
-        healthBar.value = health;
-        shieldBar.maxValue = shields;
-        shieldBar.value = shields;
+        health = maxHealth;
+        shields = maxShields;
+
+        healthBar.fillAmount = 1;
+        shieldBar.fillAmount = 1;
     }
 
     public virtual void Die()
     {
         Instantiate(fracture, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    protected void UpdateBars()
+    {
+        healthBar.fillAmount = health / maxHealth;
+        shieldBar.fillAmount = shields / maxShields;
     }
 }

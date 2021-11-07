@@ -22,55 +22,68 @@ public class PlayerCharacter : LivingEntity
     // Start is called before the first frame update
     protected override void Start()
     {
-        lowShieldNotificationThresholdAbsolute = shields * lowShieldNotificationThreshold;
-        structuralIntegrityCriticalNotificationThresholdAbsolute = health * structuralIntegrityCriticalNotificationThreshold;
+        lowShieldNotificationThresholdAbsolute = maxShields * lowShieldNotificationThreshold;
+        structuralIntegrityCriticalNotificationThresholdAbsolute = maxHealth * structuralIntegrityCriticalNotificationThreshold;
         base.Start();
     }
 
     public void Update()
     {
-        if (shieldBar.value < shields)
+        if (shields < maxShields)
         {
             rechargeTimer += Time.deltaTime;
             if (rechargeTimer > rechargeDelay)
             {
-                shieldBar.value += rechargeRate * Time.deltaTime;
-                shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f + (shieldBar.value / shields) * 1.2f);
-                if (shieldBar.value > lowShieldNotificationThresholdAbsolute)
+                shields += rechargeRate * Time.deltaTime;
+                if (shieldRenderer != null)
+                    shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f + (shields / maxShields) * 1.2f);
+                if (shields > lowShieldNotificationThresholdAbsolute)
                     lowShieldNotification.SetActive(false); // Reset the low shield notification
+
+                UpdateBars();
             }
         }
 
-        shieldRenderer.material.SetColor("Color_63659391", new Color(1.0f - (shieldBar.value * 2 / 255), shieldBar.value / 255, shieldBar.value * 2 / 255));
+        if(shieldRenderer != null)
+            shieldRenderer.material.SetColor("Color_63659391", new Color(1.0f - (shields * 2 / 255), shields / 255, shields * 2 / 255));
     }
 
     protected void OnCollisionEnter(Collision collision)
     {
-        rechargeTimer = 0;
-
-        // If shields are empty, we take real damage
-        // Else, we take shield damage and any damage the goes past the shield value is negated
-        if (shieldBar.value > 0)
+        if (collision.gameObject.tag == "Enemy")
         {
-            shieldBar.value -= collision.impulse.magnitude / damageResistance;
+            rechargeTimer = 0;
 
-            if (shieldBar.value < lowShieldNotificationThresholdAbsolute)
-                lowShieldNotification.SetActive(true); // Display low shield notification if shields go under the notification threshold
+            // If shields are empty, we take real damage
+            // Else, we take shield damage and any damage the goes past the shield value is negated
+            if (shields > 0)
+            {
+                shields -= collision.impulse.magnitude / damageResistance;
 
-            if (shieldBar.value == 0)
-                shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f);
-        }
-        else
-        {
-            healthBar.value -= collision.impulse.magnitude / damageResistance;
+                if (shields < lowShieldNotificationThresholdAbsolute)
+                    lowShieldNotification.SetActive(true); // Display low shield notification if shields go under the notification threshold
 
-            if (healthBar.value < structuralIntegrityCriticalNotificationThresholdAbsolute)
-                structuralIntegrityCriticalNotification.SetActive(true); // Display structural integrity critical notification if health goes under the notification threshold
-        }
+                if (shields <= 0)
+                {
+                    shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f);
+                    shields = 0;
+                }
+            }
+            else
+            {
+                health -= collision.impulse.magnitude / damageResistance;
 
-        if (healthBar.value == 0)
-        {
-            Die();
+                if (health < structuralIntegrityCriticalNotificationThresholdAbsolute)
+                    structuralIntegrityCriticalNotification.SetActive(true); // Display structural integrity critical notification if health goes under the notification threshold
+            }
+
+            if (health <= 0)
+            {
+                health = 0;
+                Die();
+            }
+
+            UpdateBars();
         }
     }
 
