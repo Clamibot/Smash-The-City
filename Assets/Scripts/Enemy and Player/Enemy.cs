@@ -22,15 +22,19 @@ public class Enemy : LivingEntity
     NavMeshAgent agent;
 
     //Reference to the player
-    private PlayerCharacter player;
+    private PlayerVRActions player;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
 
-        player = FindObjectOfType<PlayerCharacter>();
-        agent.destination = transform.position;
+        player = FindObjectOfType<PlayerVRActions>();
+
+        if (player != null)
+            GoTowardsPoint(player.transform.position);
+        else
+            agent.destination = transform.position;
 
         base.Start();
 
@@ -44,10 +48,11 @@ public class Enemy : LivingEntity
 
     protected void Update()
     {
-        if (player != null)
+        if (player != null && Vector3.Distance(transform.position, agent.destination) > agent.stoppingDistance)
             GoTowardsPoint(player.transform.position);
         else if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
-            GoToRandomPoint();
+            if(player == null)
+                GoToRandomPoint();
 
         if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)
         {
@@ -77,46 +82,52 @@ public class Enemy : LivingEntity
             shieldRenderer.material.SetColor("Color_63659391", new Color(1.0f - (shields * 2 / 255), shields / 255, shields * 2 / 255));
     }
 
+    public void GetHurt(float damageValue)
+    {
+        rechargeTimer = 0;
+        enemyStats.SetActive(true);
+
+        //Sheild or Health damage
+        if (shields > 0)
+        {
+            shields -= (10 + damageValue * 10) / damageResistance;
+
+            if (shields <= 0)
+            {
+                shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f);
+                shields = 0;
+            }
+        }
+        else
+        {
+            if (anim != null)
+                anim.SetTrigger("Hurt");
+            health -= (10 + damageValue * 10) / damageResistance;
+        }
+
+        //Does the creature die?
+        if (health <= 0)
+        {
+            health = 0;
+
+            deinstancingArea._enteredInstances.Remove(allocatedGO);
+            deinstancingSphere._enteredInstances.Remove(allocatedGO);
+            GPUInstancer.GPUInstancerAPI.RemovePrefabInstance(prefabManager, allocatedGO);
+
+            if (anim != null)
+                anim.SetTrigger("Die");
+            base.Die();
+        }
+
+        UpdateBars();
+    }
+
     protected void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Attack")
         {
-            rechargeTimer = 0;
-            enemyStats.SetActive(true);
-
-            //Sheild or Health damage
-            if (shields > 0)
-            {
-                shields -= collision.impulse.magnitude / damageResistance;
-
-                if (shields <= 0)
-                {
-                    shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f);
-                    shields = 0;
-                }
-            }
-            else
-            {
-                if (anim != null)
-                    anim.SetTrigger("Hurt");
-                health -= collision.impulse.magnitude / damageResistance;
-            }
-
-            //Does the creature die?
-            if (health <= 0)
-            {
-                health = 0;
-
-                deinstancingArea._enteredInstances.Remove(allocatedGO);
-                deinstancingSphere._enteredInstances.Remove(allocatedGO);
-                GPUInstancer.GPUInstancerAPI.RemovePrefabInstance(prefabManager, allocatedGO);
-
-                if (anim != null)
-                    anim.SetTrigger("Die");
-                base.Die();
-            }
-
-            UpdateBars();
+            Debug.Log("Body " + gameObject.name + " : hit value " + collision.relativeVelocity.magnitude);
+            GetHurt(collision.relativeVelocity.magnitude);
         }
     }
 
