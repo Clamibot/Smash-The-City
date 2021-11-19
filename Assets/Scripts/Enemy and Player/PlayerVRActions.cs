@@ -7,15 +7,15 @@ public class PlayerVRActions : MonoBehaviour
 {
     public float gravity = 30;
     public float sensitivity = 0.1f;
-    public float maxSpeed = 1.0f;
-    public float rotateIncrement = 90;
+    public float maxSpeed = 3;
+    public float rotateIncrement = 30;
 
-    public SteamVR_Action_Boolean rotatePress = null;
+    public SteamVR_Action_Boolean turnLeft = null;
+    public SteamVR_Action_Boolean turnRight = null;
     public SteamVR_Action_Boolean movePressed = null;
     public SteamVR_Action_Vector2 moveValue = null;
 
     private float speed = 0;
-    private Vector3 direction = Vector3.zero;
 
     private CharacterController charController;
     public Transform cameraRig;
@@ -82,29 +82,27 @@ public class PlayerVRActions : MonoBehaviour
         Vector3 movement = Vector3.zero;
 
         //If not moving
-        if (moveValue.axis.magnitude == 0)
+        if (moveValue.GetAxis(SteamVR_Input_Sources.LeftHand).magnitude == 0)
         {
             speed = 0;
-            direction = Vector3.zero;
         }
 
         //Add, clamp
-        speed += moveValue.axis.magnitude * sensitivity;
+        speed += moveValue.GetAxis(SteamVR_Input_Sources.LeftHand).magnitude * sensitivity;
         speed = Mathf.Clamp(speed, -maxSpeed * 0.5f, maxSpeed);
 
-        //direction & gravity
-        direction = new Vector3(moveValue.axis.normalized.x, 0, moveValue.axis.normalized.y);
-        movement += orientation * (speed * direction);
+        //Direction & Gravity
+        movement += orientation * (speed * Vector3.forward);
         movement.y -= gravity * Time.deltaTime;
 
         //Apply
-        Debug.Log(movement.x + " : " + moveValue.axis.magnitude + "\n" + rotatePress.state);
+        //Log(movement.x + " : " + moveValue.axis.magnitude + "\n" + rotatePress.state);
         charController.Move(movement * Time.deltaTime);
     }
 
     private Quaternion CalculateOrientation()
     {
-        float rotation = Mathf.Atan2(moveValue.axis.x, moveValue.axis.y);
+        float rotation = Mathf.Atan2(moveValue.GetAxis(SteamVR_Input_Sources.LeftHand).x, moveValue.GetAxis(SteamVR_Input_Sources.LeftHand).y);
         rotation *= Mathf.Rad2Deg;
 
         Vector3 orientationEuler = new Vector3(0, head.eulerAngles.y + rotation, 0);
@@ -115,10 +113,10 @@ public class PlayerVRActions : MonoBehaviour
     {
         float snapValue = 0;
 
-        if (rotatePress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+        if (turnLeft.GetStateDown(SteamVR_Input_Sources.RightHand))
             snapValue = -Mathf.Abs(rotateIncrement);
 
-        if (rotatePress.GetStateDown(SteamVR_Input_Sources.RightHand))
+        else if (turnRight.GetStateDown(SteamVR_Input_Sources.RightHand))
             snapValue = Mathf.Abs(rotateIncrement);
 
         transform.RotateAround(head.position, Vector3.up, snapValue);

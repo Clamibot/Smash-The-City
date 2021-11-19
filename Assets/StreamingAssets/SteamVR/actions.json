@@ -55,6 +55,14 @@
       "requirement": "mandatory"
     },
     {
+      "name": "/actions/default/in/TurnLeft",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/TurnRight",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
