@@ -11,6 +11,7 @@ public class Enemy : LivingEntity
     public int attackPower;
     public float attackRange = 10f;
     public GameObject enemyStats;
+    private float originalSpeed;
 
     [Header("GPU Stuff")]
     public GPUInstancer.GPUInstancerPrefabManager prefabManager;
@@ -36,6 +37,8 @@ public class Enemy : LivingEntity
         else
             agent.destination = transform.position;
 
+        originalSpeed = agent.speed;
+
         base.Start();
 
         //prefabManager = GameObject.Find("GPUI Prefab Manager").GetComponent<GPUInstancer.GPUInstancerPrefabManager>();
@@ -48,11 +51,23 @@ public class Enemy : LivingEntity
 
     protected void Update()
     {
-        if (player != null && Vector3.Distance(transform.position, agent.destination) > agent.stoppingDistance)
+        if (player != null)
+        {
             GoTowardsPoint(player.transform.position);
-        else if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
-            if(player == null)
+            
+        }
+        
+        
+        if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
+        {
+            if (player == null)
                 GoToRandomPoint();
+            else
+                agent.speed = originalSpeed/10;
+        }
+        else
+            agent.speed = originalSpeed;
+
 
         if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)
         {
