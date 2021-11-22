@@ -23,14 +23,14 @@ public class Enemy : LivingEntity
     NavMeshAgent agent;
 
     //Reference to the player
-    private PlayerVRActions player;
+    private PlayerCharacter player;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
 
-        player = FindObjectOfType<PlayerVRActions>();
+        player = FindObjectOfType<PlayerCharacter>();
 
         if (player != null)
             GoTowardsPoint(player.transform.position);
@@ -51,13 +51,13 @@ public class Enemy : LivingEntity
 
     protected void Update()
     {
+        //If the player exists, get their location
         if (player != null)
         {
             GoTowardsPoint(player.transform.position);
-            
         }
         
-        
+        //Based on their distance, change speed (or go around randomly if the player is N/A)
         if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
         {
             if (player == null)
@@ -68,14 +68,15 @@ public class Enemy : LivingEntity
         else
             agent.speed = originalSpeed;
 
-
+        //Do we attack
         if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)
         {
             if (anim != null)
                 anim.SetTrigger("Attack");
-            Attack();
+            StartCoroutine(MoveAfterAttackCooldown(1));
         }
 
+        //Recharge Shields
         if (shieldBar != null && shields < maxShields)
         {
             rechargeTimer += Time.deltaTime;
@@ -146,9 +147,18 @@ public class Enemy : LivingEntity
         }
     }
 
-    private void Attack()
+    private IEnumerator MoveAfterAttackCooldown(float cooldownTime)
     {
-        //TODO
+        agent.isStopped = true;
+
+        float timePassed = 0;
+        while(timePassed < cooldownTime)
+        {
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+
+        agent.isStopped = false;
     }
 
     #region NavMesh Methods

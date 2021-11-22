@@ -7013,6 +7013,8 @@ GameObject:
   - component: {fileID: 294467917}
   - component: {fileID: 294467916}
   - component: {fileID: 294467915}
+  - component: {fileID: 294467919}
+  - component: {fileID: 294467918}
   m_Layer: 6
   m_Name: PlayerRobot
   m_TagString: Untagged
@@ -7083,6 +7085,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &294467918
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294467914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &294467919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294467914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bda0dbccae837b46b094a6dee9cc8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldRenderer: {fileID: 0}
+  healthBar: {fileID: 1122450097}
+  shieldBar: {fileID: 526523709}
+  maxHealth: 100
+  maxShields: 100
+  rechargeDelay: 5
+  rechargeRate: 20
+  damageResistance: 1000
+  rechargeTimer: 0
+  fracture: {fileID: 0}
+  lowShieldNotificationThreshold: 0.3
+  structuralIntegrityCriticalNotificationThreshold: 0.3
+  lowShieldNotification: {fileID: 0}
+  structuralIntegrityCriticalNotification: {fileID: 0}
+  deathNotification: {fileID: 0}
+  pauseNotification: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  menuText: {fileID: 0}
 --- !u!1 &312283244
 GameObject:
   m_ObjectHideFlags: 0
