@@ -9,7 +9,7 @@ public class Enemy : LivingEntity
     [Header("Enemy")]
     public Animator anim;
     public int attackPower;
-    public float attackRange = 10f;
+    public float attackRange = 4f;
     public GameObject enemyStats;
     private float originalSpeed;
 
@@ -73,7 +73,7 @@ public class Enemy : LivingEntity
         {
             if (anim != null)
                 anim.SetTrigger("Attack");
-            StartCoroutine(MoveAfterAttackCooldown(1));
+            StartCoroutine(MoveAfterAttackCooldown(5));
         }
 
         //Recharge Shields
@@ -159,6 +159,12 @@ public class Enemy : LivingEntity
         }
 
         agent.isStopped = false;
+    }
+
+    public void AttemptAttack()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+            player.GetHurt(attackPower);
     }
 
     #region NavMesh Methods

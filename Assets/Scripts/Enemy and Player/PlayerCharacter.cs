@@ -48,42 +48,48 @@ public class PlayerCharacter : LivingEntity
             shieldRenderer.material.SetColor("Color_63659391", new Color(1.0f - (shields * 2 / 255), shields / 255, shields * 2 / 255));
     }
 
+    public void GetHurt(float damageValue)
+    {
+        rechargeTimer = 0;
+
+        // If shields are empty, we take real damage
+        // Else, we take shield damage and any damage the goes past the shield value is negated
+        if (shields > 0)
+        {
+            shields -= damageValue / damageResistance;
+
+            if (shields < lowShieldNotificationThresholdAbsolute)
+                lowShieldNotification.SetActive(true); // Display low shield notification if shields go under the notification threshold
+
+            if (shields <= 0)
+            {
+                shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f);
+                shields = 0;
+            }
+        }
+        else
+        {
+            health -= damageValue / damageResistance;
+
+            if (health < structuralIntegrityCriticalNotificationThresholdAbsolute)
+                structuralIntegrityCriticalNotification.SetActive(true); // Display structural integrity critical notification if health goes under the notification threshold
+        }
+
+        if (health <= 0)
+        {
+            health = 0;
+            Die();
+        }
+
+        UpdateBars();
+    }
+
     protected void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            rechargeTimer = 0;
-
-            // If shields are empty, we take real damage
-            // Else, we take shield damage and any damage the goes past the shield value is negated
-            if (shields > 0)
-            {
-                shields -= collision.impulse.magnitude / damageResistance;
-
-                if (shields < lowShieldNotificationThresholdAbsolute)
-                    lowShieldNotification.SetActive(true); // Display low shield notification if shields go under the notification threshold
-
-                if (shields <= 0)
-                {
-                    shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f);
-                    shields = 0;
-                }
-            }
-            else
-            {
-                health -= collision.impulse.magnitude / damageResistance;
-
-                if (health < structuralIntegrityCriticalNotificationThresholdAbsolute)
-                    structuralIntegrityCriticalNotification.SetActive(true); // Display structural integrity critical notification if health goes under the notification threshold
-            }
-
-            if (health <= 0)
-            {
-                health = 0;
-                Die();
-            }
-
-            UpdateBars();
+            Debug.Log("Player Collided : hit value " + collision.relativeVelocity.magnitude);
+            GetHurt(collision.relativeVelocity.magnitude);
         }
     }
 
@@ -99,4 +105,19 @@ public class PlayerCharacter : LivingEntity
         base.Die();
     }
     #endregion
+
+    /*protected void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            Debug.Log(other.GetComponent<Enemy>().canHurtPlayer);
+            //If the enemy is attacking
+            if (other.GetComponent<Enemy>().canHurtPlayer == true)
+            {
+                Debug.Log(other.GetComponent<Enemy>().canHurtPlayer);
+                Debug.Log("Player Hit : hit value " + 20);
+                GetHurt(20);
+            }
+        }
+    }*/
 }

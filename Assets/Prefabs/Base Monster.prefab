@@ -370,6 +370,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+--- !u!114 &4498360658835798681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958166926865484315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d8575f84f52d0479bea03bfe6ddaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6958166927593890404
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,11 +707,11 @@ MonoBehaviour:
   maxShields: 100
   rechargeDelay: 5
   rechargeRate: 20
-  damageResistance: 1000
+  damageResistance: 1
   rechargeTimer: 0
   fracture: {fileID: 0}
   anim: {fileID: 6958166926856108425}
-  attackPower: 1
+  attackPower: 20
   attackRange: 4
   enemyStats: {fileID: 6958166926341183034}
   prefabManager: {fileID: 0}
@@ -719,7 +731,7 @@ NavMeshAgent:
   m_Acceleration: 500
   avoidancePriority: 50
   m_AngularSpeed: 5000
-  m_StoppingDistance: 3
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -750,7 +762,7 @@ Rigidbody:
   m_GameObject: {fileID: 6958166927942315382}
   serializedVersion: 2
   m_Mass: 1000
-  m_Drag: 0
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -980,5 +992,10 @@ Animator:
 --- !u!4 &6958166926865978939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400082, guid: 24c4300f68c986241af51004b72b03f2, type: 3}
+  m_PrefabInstance: {fileID: 6958166926865583337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6958166926865484315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100082, guid: 24c4300f68c986241af51004b72b03f2, type: 3}
   m_PrefabInstance: {fileID: 6958166926865583337}
   m_PrefabAsset: {fileID: 0}
