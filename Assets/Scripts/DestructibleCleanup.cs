@@ -12,6 +12,7 @@ public class DestructibleCleanup : MonoBehaviour
     private void Start()
     {
         timePassed = 0;
+        cleanupTimer += Random.Range(0.0f, 1.0f); // Having everything disappear at once is boring. This creates a cool cleanup effect.
     }
 
     // Update is called once per frame

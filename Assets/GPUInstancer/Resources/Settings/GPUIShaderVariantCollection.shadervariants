@@ -13,3 +13,14 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
+  - first: {fileID: 4800000, guid: 629df3aefede68c48a1c6af49ed04c9c, type: 3}
+    second:
+      variants:
+      - keywords: _KEYWORD1_ON _PROPLAYERTOGGLE_ON _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+          _USEFACADETEXTURE_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: 00354713b5a3798498b8a7840c36d3a5, type: 3}
+    second:
+      variants:
+      - keywords: _KEYWORD1_ON _PROPLAYERTOGGLE_ON _USEFACADETEXTURE_ON
+        passType: 0

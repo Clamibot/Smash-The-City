@@ -9,9 +9,11 @@ public class Enemy : LivingEntity
     [Header("Enemy")]
     public Animator anim;
     public int attackPower;
+    public int attackCooldownTime;
     public float attackRange = 4f;
     public GameObject enemyStats;
     private float originalSpeed;
+    private float timePassed;
 
     [Header("GPU Stuff")]
     public GPUInstancer.GPUInstancerPrefabManager prefabManager;
@@ -38,6 +40,8 @@ public class Enemy : LivingEntity
             agent.destination = transform.position;
 
         originalSpeed = agent.speed;
+
+        timePassed = 0;
 
         base.Start();
 
@@ -73,8 +77,16 @@ public class Enemy : LivingEntity
         {
             if (anim != null)
                 anim.SetTrigger("Attack");
-            StartCoroutine(MoveAfterAttackCooldown(5));
+
+            agent.isStopped = true;
+
+            if (timePassed < attackCooldownTime)
+                timePassed += Time.deltaTime;
+            if (timePassed >= attackCooldownTime)  
+                timePassed = 0;
         }
+        else
+            agent.isStopped = false;
 
         //Recharge Shields
         if (shieldBar != null && shields < maxShields)
