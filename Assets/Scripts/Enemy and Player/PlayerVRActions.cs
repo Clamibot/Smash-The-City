@@ -27,14 +27,14 @@ public class PlayerVRActions : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    private void Start()
+    protected void Start()
     {
         //cameraRig = SteamVR_Render.Top().origin;
         //head = SteamVR_Render.Top().head;
     }
 
     // Update is called once per frame
-    private void Update()
+    protected void Update()
     {
         //HandleHead()
         HandleLocalSpace();

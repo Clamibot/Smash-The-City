@@ -80,6 +80,8 @@ namespace Valve.VR.InteractionSystem
                 //interactable.handFollowTransform = attachmentOffset;
             }
 
+            if (tag == "" || tag == "Untagged")
+                tag = "Attack";
 		}
 
 

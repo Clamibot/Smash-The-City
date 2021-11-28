@@ -138,9 +138,9 @@ public class Enemy : LivingEntity
         {
             health = 0;
 
-            deinstancingArea._enteredInstances.Remove(allocatedGO);
-            deinstancingSphere._enteredInstances.Remove(allocatedGO);
-            GPUInstancer.GPUInstancerAPI.RemovePrefabInstance(prefabManager, allocatedGO);
+            //deinstancingArea._enteredInstances.Remove(allocatedGO);
+            //deinstancingSphere._enteredInstances.Remove(allocatedGO);
+            //GPUInstancer.GPUInstancerAPI.RemovePrefabInstance(prefabManager, allocatedGO);
 
             if (anim != null)
                 anim.SetTrigger("Die");
