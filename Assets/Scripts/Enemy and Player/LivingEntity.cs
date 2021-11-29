@@ -31,8 +31,8 @@ public class LivingEntity : MonoBehaviour
 
     public virtual void Die()
     {
-        Instantiate(fracture, transform.position, transform.rotation);
-        Destroy(gameObject);
+        //Instantiate(fracture, transform.position, transform.rotation);
+        //Destroy(gameObject);
     }
 
     protected void UpdateBars()

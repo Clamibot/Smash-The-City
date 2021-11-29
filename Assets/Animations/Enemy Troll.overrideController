@@ -9,11 +9,11 @@ AnimatorOverrideController:
   m_Name: Enemy Troll
   m_Controller: {fileID: 9100000, guid: 19a1b008091ea524f841f6226cace951, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 3446299ea8161824aa26187412d69ede, type: 3}
-    m_OverrideClip: {fileID: 7400000, guid: fab7a72d5bfed564ab8361bfc3b7eeed, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: a8b3cfb4d36cd22418c848a0431ee9dd, type: 3}
     m_OverrideClip: {fileID: 7400000, guid: b84567b538c94c64196f60e963300ff7, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: af57220899fe7f942bcb29e993d89983, type: 3}
     m_OverrideClip: {fileID: 7400000, guid: 7822c0246d454a746968f83f01dcbcf7, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 93ca929acb3a10041b097cabf4988874, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 19c4c0158891d364b8a8cc4aecb389d3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3927d96784e172b49918a7217bf0445e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 666a4da396f77aa4d9a3c1fa0c32e090, type: 2}

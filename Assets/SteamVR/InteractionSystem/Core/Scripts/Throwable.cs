@@ -80,9 +80,10 @@ namespace Valve.VR.InteractionSystem
                 //interactable.handFollowTransform = attachmentOffset;
             }
 
-            if (tag == "" || tag == "Untagged")
-                tag = "Attack";
-		}
+            //FOR TESTING, TODO COMMENT OUT WHEN DONE
+            //if (tag == "" || tag == "Untagged")
+            //    tag = "Attack";
+        }
 
 
         //-------------------------------------------------
@@ -157,7 +158,9 @@ namespace Valve.VR.InteractionSystem
 			attachPosition = transform.position;
 			attachRotation = transform.rotation;
 
-		}
+            if (tag == "" || tag == "Untagged")
+                tag = "Attack";
+        }
 
 
         //-------------------------------------------------

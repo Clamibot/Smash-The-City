@@ -29,4 +29,9 @@ public class EnemyAnimatorHelper : MonoBehaviour
     {
         enemy.AttemptAttack();
     }
+
+    public void timeToShrink()
+    {
+        enemy.timeToShrinkAndDie = true;
+    }
 }

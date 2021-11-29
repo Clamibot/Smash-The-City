@@ -14,6 +14,7 @@ public class Enemy : LivingEntity
     public GameObject enemyStats;
     private float originalSpeed;
     private float timePassed;
+    [HideInInspector] public bool timeToShrinkAndDie = false;
 
     [Header("GPU Stuff")]
     public GPUInstancer.GPUInstancerPrefabManager prefabManager;
@@ -55,59 +56,70 @@ public class Enemy : LivingEntity
 
     protected void Update()
     {
-        //If the player exists, get their location
-        if (player != null)
+        if (health > 0)
         {
-            GoTowardsPoint(player.transform.position);
+            //If the player exists, get their location
+            if (player != null)
+            {
+                GoTowardsPoint(player.transform.position);
+            }
+
+            //Based on their distance, change speed (or go around randomly if the player is N/A)
+            if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
+            {
+                if (player == null)
+                    GoToRandomPoint();
+                else
+                    agent.speed = originalSpeed / 10;
+            }
+            else
+                agent.speed = originalSpeed;
+
+            //Do we attack
+            if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)
+            {
+                if (anim != null)
+                    anim.SetTrigger("Attack");
+
+                agent.isStopped = true;
+
+                if (timePassed < attackCooldownTime)
+                    timePassed += Time.deltaTime;
+                if (timePassed >= attackCooldownTime)
+                    timePassed = 0;
+            }
+            else
+                agent.isStopped = false;
+
+
+            //Recharge Shields
+            if (shieldBar != null && shields < maxShields)
+            {
+                rechargeTimer += Time.deltaTime;
+                if (rechargeTimer > rechargeDelay)
+                {
+                    shields += rechargeRate * Time.deltaTime;
+                    if (shieldRenderer != null)
+                        shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f + (shields / maxShields) * 1.2f);
+                    if (shields == maxShields)
+                    {
+                        enemyStats.SetActive(false);
+                    }
+
+                    UpdateBars();
+                }
+            }
+
+            if (shieldRenderer != null)
+                shieldRenderer.material.SetColor("Color_63659391", new Color(1.0f - (shields * 2 / 255), shields / 255, shields * 2 / 255));
         }
         
-        //Based on their distance, change speed (or go around randomly if the player is N/A)
-        if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
+        if(timeToShrinkAndDie == true)
         {
-            if (player == null)
-                GoToRandomPoint();
-            else
-                agent.speed = originalSpeed/10;
+            transform.localScale -= Time.deltaTime * 10 * Vector3.one;
+            if (transform.localScale.x < 0.5)
+                Destroy(gameObject);
         }
-        else
-            agent.speed = originalSpeed;
-
-        //Do we attack
-        if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)
-        {
-            if (anim != null)
-                anim.SetTrigger("Attack");
-
-            agent.isStopped = true;
-
-            if (timePassed < attackCooldownTime)
-                timePassed += Time.deltaTime;
-            if (timePassed >= attackCooldownTime)  
-                timePassed = 0;
-        }
-        else
-            agent.isStopped = false;
-
-        //Recharge Shields
-        if (shieldBar != null && shields < maxShields)
-        {
-            rechargeTimer += Time.deltaTime;
-            if (rechargeTimer > rechargeDelay)
-            {
-                shields += rechargeRate * Time.deltaTime;
-                if (shieldRenderer != null)
-                    shieldRenderer.material.SetFloat("Vector1_AE9DFBD", -1.0f + (shields / maxShields) * 1.2f);
-                if (shields == maxShields)
-                {
-                    enemyStats.SetActive(false);
-                }
-
-                UpdateBars();
-            }
-        }
-
-        if (shieldRenderer != null)
-            shieldRenderer.material.SetColor("Color_63659391", new Color(1.0f - (shields * 2 / 255), shields / 255, shields * 2 / 255));
     }
 
     public void GetHurt(float damageValue)
@@ -144,6 +156,14 @@ public class Enemy : LivingEntity
 
             if (anim != null)
                 anim.SetTrigger("Die");
+
+            agent.speed = 0;
+            agent.angularSpeed = 0;
+            agent.destination = transform.position;
+            agent.isStopped = true;
+
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
             base.Die();
         }
 
