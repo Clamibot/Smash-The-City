@@ -63,6 +63,18 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/SwitchHandForward",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/SwitchHandBackward",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/LaunchDebris",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

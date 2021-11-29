@@ -14,6 +14,9 @@ public class PlayerVRActions : MonoBehaviour
     public SteamVR_Action_Boolean turnRight = null;
     public SteamVR_Action_Boolean movePressed = null;
     public SteamVR_Action_Vector2 moveValue = null;
+    public SteamVR_Action_Boolean switchWeaponForward = null;
+    public SteamVR_Action_Boolean switchWeaponBackward = null;
+    public SteamVR_Action_Boolean launchDebris = null;
 
     private float speed = 0;
 
@@ -36,25 +39,17 @@ public class PlayerVRActions : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        //HandleHead()
+        //Movement
         HandleLocalSpace();
         CalculateMovement();
         SnapRotation();
+
+        //Weapon stuff
+        HandleHandSwitching();
+        HandleDebrisLaunch();
     }
 
-    /*private void HandleHead()
-    {
-        //Store current rotation
-        Vector3 oldPos = cameraRig.position;
-        Quaternion oldRot = cameraRig.rotation;
-
-        //Rotate
-        transform.eulerAngles = new Vector3(0, head.rotation.eulerAngles.y, 0);
-
-        //Restore
-        cameraRig.position = oldPos;
-        cameraRig.rotation = oldRot;
-    }*/
+    #region Movement
 
     private void HandleLocalSpace()
     {
@@ -121,4 +116,17 @@ public class PlayerVRActions : MonoBehaviour
 
         transform.RotateAround(head.position, Vector3.up, snapValue);
     }
+    #endregion
+
+    #region Hand and Weapons
+    private void HandleHandSwitching()
+    {
+        //TODO Don't allow switching while holding something?
+    }
+
+    private void HandleDebrisLaunch()
+    {
+        //TODO Launch when trigger is pressed and if there is something that we are holding
+    }
+    #endregion
 }
