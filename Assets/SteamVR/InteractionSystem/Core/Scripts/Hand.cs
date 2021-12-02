@@ -1640,7 +1640,7 @@ namespace Valve.VR.InteractionSystem
 
             GameObject renderModelInstance = GameObject.Instantiate(renderModelPrefab);
             renderModelInstance.layer = gameObject.layer;
-            renderModelInstance.tag = gameObject.tag;
+            //renderModelInstance.tag = gameObject.tag;
             renderModelInstance.transform.parent = this.transform;
             renderModelInstance.transform.localPosition = Vector3.zero;
             renderModelInstance.transform.localRotation = Quaternion.identity;

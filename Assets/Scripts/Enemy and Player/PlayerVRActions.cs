@@ -5,11 +5,14 @@ using Valve.VR;
 
 public class PlayerVRActions : MonoBehaviour
 {
+    [Header("Player Movement Stats")]
     public float gravity = 30;
     public float sensitivity = 0.1f;
     public float maxSpeed = 3;
     public float rotateIncrement = 30;
-
+    public float launchForce = 1000;
+    
+    [Header("VR Actions")]
     public SteamVR_Action_Boolean turnLeft = null;
     public SteamVR_Action_Boolean turnRight = null;
     public SteamVR_Action_Boolean movePressed = null;
@@ -17,12 +20,21 @@ public class PlayerVRActions : MonoBehaviour
     public SteamVR_Action_Boolean switchWeaponForward = null;
     public SteamVR_Action_Boolean switchWeaponBackward = null;
     public SteamVR_Action_Boolean launchDebris = null;
+    public Valve.VR.InteractionSystem.Hand leftHand;
+    public Valve.VR.InteractionSystem.Hand rightHand;
 
     private float speed = 0;
 
     private CharacterController charController;
+
+    private const int NUM_HAND_TYPES = 2;
+    private int currentHandLeft = 0;
+    private int currentHandRight = 0;
+
+    [Header("Player Objects")]
     public Transform cameraRig;
     public Transform head;
+    public GameObject[] leftHands, rightHands;
 
     private void Awake()
     {
@@ -34,6 +46,10 @@ public class PlayerVRActions : MonoBehaviour
     {
         //cameraRig = SteamVR_Render.Top().origin;
         //head = SteamVR_Render.Top().head;
+        
+
+        SwitchHand(leftHands, currentHandLeft);
+        SwitchHand(rightHands, currentHandRight);
     }
 
     // Update is called once per frame
@@ -122,11 +138,86 @@ public class PlayerVRActions : MonoBehaviour
     private void HandleHandSwitching()
     {
         //TODO Don't allow switching while holding something?
+
+        //Left Hand
+        if (leftHand.currentAttachedObject == null)
+        {
+            if (switchWeaponForward.GetStateDown(SteamVR_Input_Sources.LeftHand))
+            {
+                currentHandLeft = (currentHandLeft + 1 == NUM_HAND_TYPES) ? 0 : currentHandLeft + 1;
+
+                SwitchHand(leftHands, currentHandLeft);
+            }
+            else if (switchWeaponBackward.GetStateDown(SteamVR_Input_Sources.LeftHand))
+            {
+                currentHandLeft = (currentHandLeft - 1 < 0) ? NUM_HAND_TYPES - 1 : currentHandLeft - 1;
+
+                SwitchHand(leftHands, currentHandLeft);
+            }
+        }
+
+        //Right Hand
+        if (rightHand.currentAttachedObject == null)
+        {
+            if (switchWeaponForward.GetStateDown(SteamVR_Input_Sources.RightHand))
+            {
+                currentHandRight = (currentHandRight + 1 == NUM_HAND_TYPES) ? 0 : currentHandRight + 1;
+
+                SwitchHand(rightHands, currentHandRight);
+            }
+            else if (switchWeaponBackward.GetStateDown(SteamVR_Input_Sources.RightHand))
+            {
+                currentHandRight = (currentHandRight - 1 < 0) ? NUM_HAND_TYPES - 1 : currentHandRight - 1;
+
+                SwitchHand(rightHands, currentHandRight);
+            }
+        }
+    }
+
+    private void SwitchHand(GameObject[] hands, int switchTo)
+    {
+        if(leftHands[0] == null)
+            leftHands[0] = GameObject.FindGameObjectWithTag("LeftHandModel");
+        if (rightHands[0] == null)
+            rightHands[0] = GameObject.FindGameObjectWithTag("RightHandModel");
+
+        foreach (GameObject t in hands)
+            if(t != null)
+                t.SetActive(false);
+
+        if(hands[switchTo] != null)
+            hands[switchTo].SetActive(true);
     }
 
     private void HandleDebrisLaunch()
     {
         //TODO Launch when trigger is pressed and if there is something that we are holding
+        //Left Hand
+        if (leftHand.currentAttachedObject != null && currentHandLeft == 1 && launchDebris.GetStateDown(SteamVR_Input_Sources.LeftHand))
+        {
+            ShootDebris(leftHand.currentAttachedObject, leftHand);
+        }
+
+        //Right Hand
+        if (rightHand.currentAttachedObject != null && currentHandRight == 1 && launchDebris.GetStateDown(SteamVR_Input_Sources.RightHand))
+        {
+            ShootDebris(rightHand.currentAttachedObject, rightHand);
+        }
+    }
+
+    private void ShootDebris(GameObject debris, Valve.VR.InteractionSystem.Hand hand)
+    {
+        Rigidbody debrisBody = debris.GetComponent<Rigidbody>();
+
+        if(debrisBody != null)
+        {
+            hand.DetachObject(debris);
+            debrisBody.AddForce(launchForce * hand.transform.forward, ForceMode.Impulse);
+        }
+        else
+        {
+            Debug.LogError("Couldn't get Throwable component!");
+        }
     }
     #endregion
 }
