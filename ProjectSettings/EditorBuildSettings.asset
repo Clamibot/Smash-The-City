@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Main Menu.unity
+    guid: 9ffddbb80a590b84e96443041b86ade2
+  - enabled: 1
+    path: Assets/Scenes/Island City.unity
+    guid: 24e32490c1bdeff4a802f543efbd488f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ba2ca0e2273f0cf40a650499b67292fd, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: aabce7e31e644cf498e40060d98d8382, type: 2}
