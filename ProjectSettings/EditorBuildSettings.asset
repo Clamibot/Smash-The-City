@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Island City.unity
     guid: 24e32490c1bdeff4a802f543efbd488f
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 727ccd235a2b0f64cb739e3499624710
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: 3894d5952b25e0046937009b9ec3548c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ba2ca0e2273f0cf40a650499b67292fd, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: aabce7e31e644cf498e40060d98d8382, type: 2}
