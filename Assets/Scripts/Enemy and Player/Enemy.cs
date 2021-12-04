@@ -72,8 +72,14 @@ public class Enemy : LivingEntity
                 else
                     agent.speed = originalSpeed / 10;
             }
+            //If we are below the water still, be really fast
+            else if (transform.position.y < -2)
+                agent.speed = originalSpeed * 10;
+            //Walk at normal pace when going to the player/destination
             else
                 agent.speed = originalSpeed;
+
+            
 
             //Do we attack
             if (player != null && Vector3.Distance(transform.position, player.transform.position) < attackRange)

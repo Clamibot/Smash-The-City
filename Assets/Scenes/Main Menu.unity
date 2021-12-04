@@ -5167,6 +5167,7 @@ MonoBehaviour:
   rightHands:
   - {fileID: 0}
   - {fileID: 1330112918}
+  photonPrefab: {fileID: 0}
 --- !u!1 &1776235061
 GameObject:
   m_ObjectHideFlags: 0
