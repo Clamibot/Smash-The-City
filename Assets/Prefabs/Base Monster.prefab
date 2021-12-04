@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 6958166927942315369}
   m_Layer: 8
   m_Name: Base Monster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -712,8 +712,10 @@ MonoBehaviour:
   fracture: {fileID: 0}
   anim: {fileID: 6958166926856108425}
   attackPower: 20
+  attackCooldownTime: 0
   attackRange: 4
   enemyStats: {fileID: 6958166926341183034}
+  timeToShrinkAndDie: 0
   prefabManager: {fileID: 0}
   deinstancingSphere: {fileID: 0}
   deinstancingArea: {fileID: 0}

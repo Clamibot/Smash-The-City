@@ -177,6 +177,12 @@ public class Enemy : LivingEntity
             Debug.Log("Body " + gameObject.name + " : hit value " + collision.relativeVelocity.magnitude);
             GetHurt(collision.relativeVelocity.magnitude);
         }
+        if (collision.gameObject.tag == "Photon")
+        {
+            Debug.Log("Body " + gameObject.name + " : hit value " + 1);
+            GetHurt(1);
+            Destroy(collision.gameObject);
+        }
     }
 
     private IEnumerator MoveAfterAttackCooldown(float cooldownTime)

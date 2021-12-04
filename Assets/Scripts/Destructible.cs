@@ -22,7 +22,7 @@ public class Destructible : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.impulse.magnitude > breakForce)
+        if (collision.impulse.magnitude > breakForce && collision.gameObject.tag != "Photon")
         {
             deinstancingArea._enteredInstances.Remove(allocatedGO);
             deinstancingSphere._enteredInstances.Remove(allocatedGO);

@@ -8,6 +8,7 @@ TagManager:
   - Attack
   - LeftHandModel
   - RightHandModel
+  - Photon
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - Player Hands
   - Enemy Extra Body
-  - 
+  - Photon
   - 
   - 
   - 

@@ -27,7 +27,7 @@ public class PlayerVRActions : MonoBehaviour
 
     private CharacterController charController;
 
-    private const int NUM_HAND_TYPES = 2;
+    private const int NUM_HAND_TYPES = 3;
     private int currentHandLeft = 0;
     private int currentHandRight = 0;
 
@@ -35,6 +35,7 @@ public class PlayerVRActions : MonoBehaviour
     public Transform cameraRig;
     public Transform head;
     public GameObject[] leftHands, rightHands;
+    public GameObject photonPrefab;
 
     private void Awake()
     {
@@ -62,7 +63,7 @@ public class PlayerVRActions : MonoBehaviour
 
         //Weapon stuff
         HandleHandSwitching();
-        HandleDebrisLaunch();
+        HandleWeapons();
     }
 
     #region Movement
@@ -185,38 +186,72 @@ public class PlayerVRActions : MonoBehaviour
             if(t != null)
                 t.SetActive(false);
 
-        if(hands[switchTo] != null)
+        if (hands[switchTo] != null)
+        {
             hands[switchTo].SetActive(true);
+            
+            if(switchTo != 0)
+            {
+                StopAllCoroutines();
+                StartCoroutine(followHands(hands[switchTo], hands[0]));
+            }    
+        }
     }
 
-    private void HandleDebrisLaunch()
+    private void HandleWeapons()
     {
-        //TODO Launch when trigger is pressed and if there is something that we are holding
         //Left Hand
-        if (leftHand.currentAttachedObject != null && currentHandLeft == 1 && launchDebris.GetStateDown(SteamVR_Input_Sources.LeftHand))
+        if (launchDebris.GetStateDown(SteamVR_Input_Sources.LeftHand))
         {
-            ShootDebris(leftHand.currentAttachedObject, leftHand);
+            if (currentHandLeft == 1 && leftHand.currentAttachedObject != null)
+                ShootDebris(leftHand.currentAttachedObject, leftHand, leftHands[currentHandLeft]);
+            else if (currentHandLeft == 2)
+                ShootPhoton(leftHands[currentHandLeft]);
         }
 
         //Right Hand
-        if (rightHand.currentAttachedObject != null && currentHandRight == 1 && launchDebris.GetStateDown(SteamVR_Input_Sources.RightHand))
+        if (launchDebris.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
-            ShootDebris(rightHand.currentAttachedObject, rightHand);
+            if (currentHandRight == 1 && rightHand.currentAttachedObject != null)
+                ShootDebris(rightHand.currentAttachedObject, rightHand, rightHands[currentHandRight]);
+            else if (currentHandRight == 2)
+                ShootPhoton(rightHands[currentHandRight]);
         }
     }
 
-    private void ShootDebris(GameObject debris, Valve.VR.InteractionSystem.Hand hand)
+    private void ShootDebris(GameObject debris, Valve.VR.InteractionSystem.Hand hand, GameObject handModel)
     {
+        //Launch when trigger is pressed and if there is something that we are holding
         Rigidbody debrisBody = debris.GetComponent<Rigidbody>();
 
         if(debrisBody != null)
         {
             hand.DetachObject(debris);
-            debrisBody.AddForce(launchForce * hand.transform.forward, ForceMode.Impulse);
+            debrisBody.AddForce(launchForce * handModel.transform.forward, ForceMode.Impulse);
         }
         else
         {
             Debug.LogError("Couldn't get Throwable component!");
+        }
+    }
+
+    private void ShootPhoton(GameObject handModel)
+    {
+        Rigidbody photon = Instantiate(photonPrefab, handModel.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+
+        photon.transform.localScale = transform.localScale * 0.1f;
+
+        photon.AddForce(launchForce * 0.1f * handModel.transform.forward, ForceMode.Impulse);
+
+        Destroy(photon.gameObject, 3f);
+    }
+
+    private IEnumerator followHands(GameObject handModel, GameObject actualHand)
+    {
+        while(true)
+        {
+            handModel.transform.position = actualHand.transform.position;
+            yield return null;
         }
     }
     #endregion
