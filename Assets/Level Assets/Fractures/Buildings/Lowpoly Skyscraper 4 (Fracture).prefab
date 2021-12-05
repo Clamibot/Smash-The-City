@@ -21504,6 +21504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5545197923938359302}
   - component: {fileID: -3592302058033833660}
+  - component: {fileID: 7834291630207851328}
   m_Layer: 0
   m_Name: Lowpoly Skyscraper 4 (Fracture)
   m_TagString: Untagged
@@ -21679,8 +21680,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b48823af8365d46bf8a40dafc4118e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cleanupTimer: 30
+  cleanupTimer: 60
   timePassed: 0
+--- !u!114 &7834291630207851328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169939465025880764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 4ef960041ee4be34f9497c0e39f192dd, type: 2}
 --- !u!1 &5179661402479324589
 GameObject:
   m_ObjectHideFlags: 0

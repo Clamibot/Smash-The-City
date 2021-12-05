@@ -125,11 +125,11 @@ public class PlayerVRActions : MonoBehaviour
     {
         float snapValue = 0;
 
-        if (turnLeft.GetStateDown(SteamVR_Input_Sources.RightHand))
-            snapValue = -Mathf.Abs(rotateIncrement);
+        if (turnLeft.GetState(SteamVR_Input_Sources.RightHand))
+            snapValue = -Mathf.Abs(rotateIncrement) * Time.deltaTime;
 
-        else if (turnRight.GetStateDown(SteamVR_Input_Sources.RightHand))
-            snapValue = Mathf.Abs(rotateIncrement);
+        else if (turnRight.GetState(SteamVR_Input_Sources.RightHand))
+            snapValue = Mathf.Abs(rotateIncrement) * Time.deltaTime;
 
         transform.RotateAround(head.position, Vector3.up, snapValue);
     }

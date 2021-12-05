@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 4706309494359352177}
   - component: {fileID: 4706309494359352178}
   - component: {fileID: 4706309494359352140}
+  - component: {fileID: 6693872806527900432}
   m_Layer: 0
   m_Name: Lowpoly Skyscraper 17 (Destructible)
   m_TagString: Untagged
@@ -291,21 +292,28 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4706309494359352143}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
+  m_LocalReferencePoint: {x: -100, y: 849.5, z: 0}
+  m_Size: 1701
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
   - screenRelativeHeight: 0.6
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 4706309494593697921}
+    - renderer: {fileID: 4706309493590316189}
+    - renderer: {fileID: 4706309493074636610}
   - screenRelativeHeight: 0.3
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 4706309494593697921}
+    - renderer: {fileID: 4706309493590316189}
+    - renderer: {fileID: 4706309494112858704}
   - screenRelativeHeight: 0.1
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 4706309494593697921}
   m_Enabled: 1
 --- !u!65 &4706309494359352179
 BoxCollider:
@@ -371,11 +379,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70d7901c14e4b14a82268507b012fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakForce: 1
+  breakForce: 10
   fracture: {fileID: 5388146818865472125, guid: 6f0c6bbf77545fc4d8160b29ab99ad9a, type: 3}
   prefabManager: {fileID: 0}
   deinstancingSphere: {fileID: 0}
   deinstancingArea: {fileID: 0}
+--- !u!114 &6693872806527900432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706309494359352143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 5c3ea00c2c443844284c49458f6069cf, type: 2}
 --- !u!1 &4706309494593697948
 GameObject:
   m_ObjectHideFlags: 0

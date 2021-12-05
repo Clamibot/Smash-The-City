@@ -24,9 +24,12 @@ public class Destructible : MonoBehaviour
     {
         if (collision.impulse.magnitude > breakForce && collision.gameObject.tag != "Photon")
         {
-            deinstancingArea._enteredInstances.Remove(allocatedGO);
-            deinstancingSphere._enteredInstances.Remove(allocatedGO);
-            GPUInstancer.GPUInstancerAPI.RemovePrefabInstance(prefabManager, allocatedGO);
+            if (prefabManager != null && prefabManager.isActiveAndEnabled) // Allows the destructible to work both as a GPU Instancer prefab and as a regular GameObject
+            {
+                deinstancingArea._enteredInstances.Remove(allocatedGO);
+                deinstancingSphere._enteredInstances.Remove(allocatedGO);
+                GPUInstancer.GPUInstancerAPI.RemovePrefabInstance(prefabManager, allocatedGO);
+            }
             Instantiate(fracture, transform.position, transform.rotation);
             Destroy(gameObject);
         }

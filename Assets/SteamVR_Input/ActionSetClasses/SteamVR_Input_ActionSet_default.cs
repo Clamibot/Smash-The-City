@@ -105,6 +105,22 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean turnleft
+        {
+            get
+            {
+                return SteamVR_Actions.default_turnleft;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean turnright
+        {
+            get
+            {
+                return SteamVR_Actions.default_turnright;
+            }
+        }
+        
         public virtual SteamVR_Action_Vector2 Move
         {
             get
@@ -113,43 +129,27 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean TurnLeft
+        public virtual SteamVR_Action_Boolean switchhandforward
         {
             get
             {
-                return SteamVR_Actions.default_TurnLeft;
+                return SteamVR_Actions.default_switchhandforward;
             }
         }
         
-        public virtual SteamVR_Action_Boolean TurnRight
+        public virtual SteamVR_Action_Boolean switchhandbackward
         {
             get
             {
-                return SteamVR_Actions.default_TurnRight;
+                return SteamVR_Actions.default_switchhandbackward;
             }
         }
         
-        public virtual SteamVR_Action_Boolean SwitchHandForward
+        public virtual SteamVR_Action_Boolean launchdebris
         {
             get
             {
-                return SteamVR_Actions.default_SwitchHandForward;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean SwitchHandBackward
-        {
-            get
-            {
-                return SteamVR_Actions.default_SwitchHandBackward;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean LaunchDebris
-        {
-            get
-            {
-                return SteamVR_Actions.default_LaunchDebris;
+                return SteamVR_Actions.default_launchdebris;
             }
         }
         

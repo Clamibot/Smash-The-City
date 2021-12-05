@@ -50,28 +50,28 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/turnleft",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/turnright",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/in/Move",
       "type": "vector2",
-      "requirement": "mandatory"
+      "requirement": "suggested"
     },
     {
-      "name": "/actions/default/in/TurnLeft",
+      "name": "/actions/default/in/switchhandforward",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/TurnRight",
+      "name": "/actions/default/in/switchhandbackward",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/SwitchHandForward",
-      "type": "boolean"
-    },
-    {
-      "name": "/actions/default/in/SwitchHandBackward",
-      "type": "boolean"
-    },
-    {
-      "name": "/actions/default/in/LaunchDebris",
+      "name": "/actions/default/in/launchdebris",
       "type": "boolean"
     },
     {

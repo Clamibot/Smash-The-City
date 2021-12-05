@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabObject: {fileID: 8945353112339790971, guid: 125397e484921ec4da8036d8587faf42, type: 3}
   isShadowCasting: 1
-  useCustomShadowDistance: 0
-  shadowDistance: 0
+  useCustomShadowDistance: 1
+  shadowDistance: 1000
   shadowLODMap:
   - 0
   - 4
@@ -34,9 +34,9 @@ MonoBehaviour:
   - 0
   - 0
   useOriginalShaderForShadow: 1
-  cullShadows: 0
+  cullShadows: 1
   minDistance: 0
-  maxDistance: 500
+  maxDistance: 5000
   isFrustumCulling: 1
   isOcclusionCulling: 1
   frustumOffset: 0.2

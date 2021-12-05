@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70d7901c14e4b14a82268507b012fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakForce: 1
+  breakForce: 10
   fracture: {fileID: 8091120672492993566, guid: e4e2cb15fe2427e48a3de34a8d2f73e8, type: 3}
   prefabManager: {fileID: 0}
   deinstancingSphere: {fileID: 0}
