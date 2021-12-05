@@ -27,7 +27,7 @@ public class PlayerVRActions : MonoBehaviour
 
     private CharacterController charController;
 
-    private const int NUM_HAND_TYPES = 3;
+    private int NUM_HAND_TYPES;
     private int currentHandLeft = 0;
     private int currentHandRight = 0;
 
@@ -47,6 +47,8 @@ public class PlayerVRActions : MonoBehaviour
     {
         //cameraRig = SteamVR_Render.Top().origin;
         //head = SteamVR_Render.Top().head;
+
+        NUM_HAND_TYPES = leftHands.Length;
         
 
         SwitchHand(leftHands, currentHandLeft);
@@ -190,11 +192,11 @@ public class PlayerVRActions : MonoBehaviour
         {
             hands[switchTo].SetActive(true);
             
-            if(switchTo != 0)
-            {
-                StopAllCoroutines();
-                StartCoroutine(followHands(hands[switchTo], hands[0]));
-            }    
+            //if(switchTo != 0)
+            //{
+                //StopAllCoroutines();
+                //StartCoroutine(followHands(hands[switchTo], hands[0]));
+            //}    
         }
     }
 
@@ -246,13 +248,13 @@ public class PlayerVRActions : MonoBehaviour
         Destroy(photon.gameObject, 3f);
     }
 
-    private IEnumerator followHands(GameObject handModel, GameObject actualHand)
+    /*private IEnumerator followHands(GameObject handModel, GameObject actualHand)
     {
         while(true)
         {
             handModel.transform.position = actualHand.transform.position;
             yield return null;
         }
-    }
+    }*/
     #endregion
 }
