@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3506221059362880449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.2}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.7}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.9}
   m_Children:
   - {fileID: 686545596982415367}
   - {fileID: 1320652863758713235}
@@ -111,9 +111,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &3951139364140908095
 GameObject:
@@ -385,7 +385,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0

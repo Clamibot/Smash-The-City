@@ -2546,6 +2546,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815745564}
   m_CullTransparentMesh: 1
+--- !u!1001 &826944259
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 89227758}
+    m_Modifications:
+    - target: {fileID: 3506221059362880449, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_Name
+      value: Mecha Maul
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+--- !u!1 &826944260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3506221059362880449, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+  m_PrefabInstance: {fileID: 826944259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &839441513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4034,6 +4096,68 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
+--- !u!1001 &1304342727
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 89227752}
+    m_Modifications:
+    - target: {fileID: 3506221059362880449, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_Name
+      value: Mecha Maul
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159143126336785522, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+--- !u!1 &1304342728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3506221059362880449, guid: 0e7132dc71ba55e4cafafd6ca7d220d1, type: 3}
+  m_PrefabInstance: {fileID: 1304342727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1320078274
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,10 +5386,10 @@ MonoBehaviour:
   rotateIncrement: 30
   launchForce: 1000
   turnLeft:
-    actionPath: /actions/default/in/TurnLeft
+    actionPath: /actions/default/in/turnleft
     needsReinit: 0
   turnRight:
-    actionPath: /actions/default/in/TurnRight
+    actionPath: /actions/default/in/turnright
     needsReinit: 0
   movePressed:
     actionPath: /actions/default/in/Teleport
@@ -5274,13 +5398,13 @@ MonoBehaviour:
     actionPath: /actions/default/in/Move
     needsReinit: 0
   switchWeaponForward:
-    actionPath: /actions/default/in/SwitchHandForward
+    actionPath: /actions/default/in/switchhandforward
     needsReinit: 0
   switchWeaponBackward:
-    actionPath: /actions/default/in/SwitchHandBackward
+    actionPath: /actions/default/in/switchhandbackward
     needsReinit: 0
   launchDebris:
-    actionPath: /actions/default/in/LaunchDebris
+    actionPath: /actions/default/in/launchdebris
     needsReinit: 0
   leftHand: {fileID: 89227762}
   rightHand: {fileID: 89227761}
@@ -5290,10 +5414,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1021631109}
   - {fileID: 1404445168}
+  - {fileID: 826944260}
   rightHands:
   - {fileID: 0}
   - {fileID: 2100376287}
   - {fileID: 839441514}
+  - {fileID: 1304342728}
   photonPrefab: {fileID: 5625152824953430769, guid: 8b51ffe09ab988243baac4d3b2c0f4fe, type: 3}
 --- !u!4 &1708674483
 Transform:
