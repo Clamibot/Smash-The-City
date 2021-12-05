@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : LivingEntity
 {
@@ -18,12 +20,14 @@ public class PlayerCharacter : LivingEntity
     public Text menuText;
     private float lowShieldNotificationThresholdAbsolute;
     private float structuralIntegrityCriticalNotificationThresholdAbsolute;
+    public string loseScene = "Defeat";
 
     // Start is called before the first frame update
     protected override void Start()
     {
         lowShieldNotificationThresholdAbsolute = maxShields * lowShieldNotificationThreshold;
         structuralIntegrityCriticalNotificationThresholdAbsolute = maxHealth * structuralIntegrityCriticalNotificationThreshold;
+
         base.Start();
     }
 
@@ -103,21 +107,8 @@ public class PlayerCharacter : LivingEntity
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         base.Die();
+
+        //SceneManager.LoadScene(loseScene);
     }
     #endregion
-
-    /*protected void OnTriggerStay(Collider other)
-    {
-        if(other.tag == "Enemy")
-        {
-            Debug.Log(other.GetComponent<Enemy>().canHurtPlayer);
-            //If the enemy is attacking
-            if (other.GetComponent<Enemy>().canHurtPlayer == true)
-            {
-                Debug.Log(other.GetComponent<Enemy>().canHurtPlayer);
-                Debug.Log("Player Hit : hit value " + 20);
-                GetHurt(20);
-            }
-        }
-    }*/
 }

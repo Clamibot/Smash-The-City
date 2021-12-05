@@ -25,8 +25,10 @@ public class LivingEntity : MonoBehaviour
         health = maxHealth;
         shields = maxShields;
 
-        healthBar.fillAmount = 1;
-        shieldBar.fillAmount = 1;
+        if(healthBar != null)
+            healthBar.fillAmount = 1;
+        if (shieldBar != null)
+            shieldBar.fillAmount = 1;
     }
 
     public virtual void Die()
