@@ -15,6 +15,7 @@ public class Enemy : LivingEntity
     private float originalSpeed;
     private float timePassed;
     [HideInInspector] public bool timeToShrinkAndDie = false;
+    public AudioSource attackSFX, hurtSFX, dieSFX;
 
     [Header("GPU Stuff")]
     public GPUInstancer.GPUInstancerPrefabManager prefabManager;
@@ -148,6 +149,8 @@ public class Enemy : LivingEntity
         {
             if (anim != null)
                 anim.SetTrigger("Hurt");
+            if (hurtSFX != null)
+                hurtSFX.Play();
             health -= (10 + damageValue * 10) / damageResistance;
         }
 
@@ -162,6 +165,8 @@ public class Enemy : LivingEntity
 
             if (anim != null)
                 anim.SetTrigger("Die");
+            if (dieSFX != null)
+                dieSFX.Play();
 
             agent.speed = 0;
             agent.angularSpeed = 0;
@@ -208,7 +213,13 @@ public class Enemy : LivingEntity
     public void AttemptAttack()
     {
         if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+        {
+            Debug.Log("Hit player! Player health " +player.health+ " Player Shields "+player.shields);
             player.GetHurt(attackPower);
+        }
+
+        if (attackSFX != null)
+            attackSFX.Play();
     }
 
     #region NavMesh Methods

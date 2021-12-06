@@ -36,6 +36,8 @@ public class PlayerVRActions : MonoBehaviour
     public Transform head;
     public GameObject[] leftHands, rightHands;
     public GameObject photonPrefab;
+    public AudioSource changeWeaponSFX, launchDebrisSFX, photonGunSFX;
+
 
     private void Awake()
     {
@@ -188,6 +190,9 @@ public class PlayerVRActions : MonoBehaviour
             if(t != null)
                 t.SetActive(false);
 
+        if (changeWeaponSFX != null)
+            changeWeaponSFX.Play();
+
         if (hands[switchTo] != null)
         {
             hands[switchTo].SetActive(true);
@@ -228,6 +233,9 @@ public class PlayerVRActions : MonoBehaviour
 
         if(debrisBody != null)
         {
+            if (launchDebrisSFX != null)
+                launchDebrisSFX.PlayOneShot(launchDebrisSFX.clip);
+
             hand.DetachObject(debris);
             debrisBody.AddForce(launchForce * handModel.transform.forward, ForceMode.Impulse);
         }
@@ -242,6 +250,9 @@ public class PlayerVRActions : MonoBehaviour
         Rigidbody photon = Instantiate(photonPrefab, handModel.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
         photon.transform.localScale = transform.localScale * 0.1f;
+
+        if (photonGunSFX != null)
+            photonGunSFX.PlayOneShot(photonGunSFX.clip);
 
         photon.AddForce(launchForce * 0.1f * handModel.transform.forward, ForceMode.Impulse);
 

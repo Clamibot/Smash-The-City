@@ -3639,6 +3639,88 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
+--- !u!1001 &1116926348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1708674483}
+    m_Modifications:
+    - target: {fileID: 2635611843540648922, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_Name
+      value: Audio Sources
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+--- !u!82 &1116926349 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2635611843579355850, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1116926348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1116926350 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1116926348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1116926351 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2635611842666680497, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1116926348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1116926352 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2635611842026447083, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1116926348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1116926353 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2635611843001072985, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1116926348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1169704655
 GameObject:
   m_ObjectHideFlags: 0
@@ -4807,6 +4889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScene: Island City
+  buttonSFX: {fileID: 1116926349}
 --- !u!1 &1544839179
 GameObject:
   m_ObjectHideFlags: 0
@@ -5335,7 +5418,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
   maxHealth: 100
+  health: 0
   maxShields: 100
+  shields: 0
   rechargeDelay: 5
   rechargeRate: 20
   damageResistance: 1
@@ -5421,6 +5506,9 @@ MonoBehaviour:
   - {fileID: 839441514}
   - {fileID: 1304342728}
   photonPrefab: {fileID: 5625152824953430769, guid: 8b51ffe09ab988243baac4d3b2c0f4fe, type: 3}
+  changeWeaponSFX: {fileID: 1116926353}
+  launchDebrisSFX: {fileID: 1116926352}
+  photonGunSFX: {fileID: 1116926351}
 --- !u!4 &1708674483
 Transform:
   m_ObjectHideFlags: 0
@@ -5433,6 +5521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 89227754}
+  - {fileID: 1116926350}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

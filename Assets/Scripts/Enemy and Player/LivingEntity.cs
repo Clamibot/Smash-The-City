@@ -10,9 +10,9 @@ public class LivingEntity : MonoBehaviour
     public Image healthBar;
     public Image shieldBar;
     public float maxHealth = 100;
-    protected float health;
+    [HideInInspector] public float health;
     public float maxShields = 100;
-    protected float shields;
+    [HideInInspector] public float shields;
     public float rechargeDelay = 5;
     public float rechargeRate = 20;
     public float damageResistance = 1000;

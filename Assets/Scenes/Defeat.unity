@@ -4368,6 +4368,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468465845}
   m_CullTransparentMesh: 1
+--- !u!1001 &1473565695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1724061435}
+    m_Modifications:
+    - target: {fileID: 2635611843540648922, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_Name
+      value: Audio Sources
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+--- !u!82 &1473565696 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2635611843579355850, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1473565695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1473565697 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2635611843540648925, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1473565695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1473565698 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2635611842666680497, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1473565695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1473565699 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2635611842026447083, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1473565695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1473565700 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2635611843001072985, guid: 3be5e1cca33dc2c4b93b98ca486f042a, type: 3}
+  m_PrefabInstance: {fileID: 1473565695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1476476858
 GameObject:
   m_ObjectHideFlags: 0
@@ -4590,6 +4672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScene: Main Menu
+  buttonSFX: {fileID: 1473565696}
 --- !u!1001 &1518439851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5167,6 +5250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 221237291}
+  - {fileID: 1473565697}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5200,7 +5284,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
   maxHealth: 100
+  health: 0
   maxShields: 100
+  shields: 0
   rechargeDelay: 5
   rechargeRate: 20
   damageResistance: 1
@@ -5286,6 +5372,9 @@ MonoBehaviour:
   - {fileID: 421541585}
   - {fileID: 1317601430}
   photonPrefab: {fileID: 5625152824953430769, guid: 8b51ffe09ab988243baac4d3b2c0f4fe, type: 3}
+  changeWeaponSFX: {fileID: 1473565700}
+  launchDebrisSFX: {fileID: 1473565699}
+  photonGunSFX: {fileID: 1473565698}
 --- !u!1 &1776235061
 GameObject:
   m_ObjectHideFlags: 0
