@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SteamVR_Settings
   m_EditorClassIdentifier: 
   pauseGameWhenDashboardVisible: 1
-  lockPhysicsUpdateRateToRenderFrequency: 0
+  lockPhysicsUpdateRateToRenderFrequency: 1
   trackingSpaceOrigin: 1
   actionsFilePath: actions.json
   steamVRInputPath: SteamVR_Input

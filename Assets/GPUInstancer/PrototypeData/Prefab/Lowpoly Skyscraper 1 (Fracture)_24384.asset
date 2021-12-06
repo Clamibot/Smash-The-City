@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabObject: {fileID: 8091120672492993566, guid: e4e2cb15fe2427e48a3de34a8d2f73e8, type: 3}
   isShadowCasting: 1
-  useCustomShadowDistance: 0
-  shadowDistance: 0
+  useCustomShadowDistance: 1
+  shadowDistance: 1000
   shadowLODMap:
   - 0
   - 4
@@ -34,9 +34,9 @@ MonoBehaviour:
   - 0
   - 0
   useOriginalShaderForShadow: 1
-  cullShadows: 0
+  cullShadows: 1
   minDistance: 0
-  maxDistance: 500
+  maxDistance: 5000
   isFrustumCulling: 1
   isOcclusionCulling: 1
   frustumOffset: 0.2
@@ -69,14 +69,14 @@ MonoBehaviour:
     billboardFaceCamPos: 0
   isBillboardDisabled: 0
   useGeneratedBillboard: 0
-  checkedForBillboardExtensions: 0
+  checkedForBillboardExtensions: 1
   autoUpdateTransformData: 0
   treeType: 0
   warningText: 
-  enableRuntimeModifications: 0
+  enableRuntimeModifications: 1
   startWithRigidBody: 0
-  addRemoveInstancesAtRuntime: 0
-  extraBufferSize: 0
+  addRemoveInstancesAtRuntime: 1
+  extraBufferSize: 16384
   addRuntimeHandlerScript: 0
   hasRigidBody: 0
   rigidbodyData:
