@@ -15,14 +15,19 @@ There is a huge emphasis on destructability as a gameplay element in this game. 
 Currently, This Game Is Playable Only In VR Using A SteamVR Compatible Headset.
 
 Left Joystick - Move Around
+
 Left Index Trigger - Fire Left Hand Weapon
+
 Left Middle Trigger (Hold Down) - Grab Object With Left Hand. Release This Button While Throwing To Throw The Object In Your Hand.
 
 Right Joystick - Look Around
+
 Right Index Trigger - Fire Right Hand Weapon
+
 Right Middle Trigger (Hold Down) - Grab Object With Right Hand. Release This Button While Throwing To Throw The Object In Your Hand.
 
 Y - Change Left Hand Weapon
+
 B - Change Right Hand Weapon
 
 # **Weapons:**
